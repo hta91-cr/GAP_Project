@@ -1,0 +1,36 @@
+<!--Navbar-->
+<mdb-navbar
+  SideClass="navbar navbar-expand-lg navbar-dark indigo"
+  [containerInside]="false"
+>
+  <!-- Navbar brand -->
+  <mdb-navbar-brand
+    ><a class="navbar-brand" [routerLink]="['/home']"><i class="fas fa-clinic-medical"></i></a></mdb-navbar-brand
+  >
+
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/home']"
+          ><mdb-icon fas icon="home"></mdb-icon> Inicio</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patients']"
+          ><mdb-icon fas icon="user"></mdb-icon> Pacientes</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/specialties']"
+          ><mdb-icon fas icon="user-md"></mdb-icon> Especialidades</a
+        >
+      </li>
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+</mdb-navbar>
+<!--/.Navbar-->
+<router-outlet></router-outlet>

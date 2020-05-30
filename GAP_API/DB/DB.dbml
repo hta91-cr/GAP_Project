@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GAP_DB" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=GAP_DB;Integrated Security=True" SettingsObjectName="DB.Properties.Settings" SettingsPropertyName="GAP_DBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.appointments" Member="appointments">
+    <Type Name="appointments">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_specialty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="specialty_appointments" Member="specialty" ThisKey="id_specialty" OtherKey="id" Type="specialty" IsForeignKey="true" />
+      <Association Name="User_appointments" Member="User" ThisKey="id_user" OtherKey="id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.specialty" Member="specialty">
+    <Type Name="specialty">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="specialty_appointments" Member="appointments" ThisKey="id" OtherKey="id_specialty" Type="appointments" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="full_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="User_appointments" Member="appointments" ThisKey="id" OtherKey="id_user" Type="appointments" />
+    </Type>
+  </Table>
+</Database>
